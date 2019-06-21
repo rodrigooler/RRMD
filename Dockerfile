@@ -4,8 +4,12 @@ WORKDIR /usr/src/myapp
 
 COPY . .
 
-RUN cargo build --release
+RUN rustup default nightly
 
-RUN cargo install --path .
+RUN rustup override set nightly
 
-CMD ["/usr/local/cargo/bin/myapp"]
+# RUN cargo build --release
+
+# RUN cargo install --path .
+
+CMD ["cargo", "run"]
